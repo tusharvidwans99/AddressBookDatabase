@@ -31,3 +31,8 @@ set firstName='Sumit'
 where firstName='Shubham'
 
 select * from AddressBook
+
+/*UC5 - Deleting contact person by their name*/
+
+delete AddressBook
+where firstName='Basila' and lastname='Noushad'
