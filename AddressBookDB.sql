@@ -24,3 +24,10 @@ insert into AddressBook values
 ('Basila','Noushad','Mattancherry','Kochi','Kerala',510033,9688920910,'basila.noushad@yahoo.com'),
 ('Manasa','Pochiraju','Steel Plant','Vizag','Andhra Pradesh',530032,9848553322,'manasa.p@yahoo.com'),
 ('Sai','Chandu','Chanda Nagar','Hyderabad','Telangana',540081,9909339211,'saichandu998@gmail.com')
+
+/*UC4 - Editing contact by their name*/
+update AddressBook
+set firstName='Sumit'
+where firstName='Shubham'
+
+select * from AddressBook
