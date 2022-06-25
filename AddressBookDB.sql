@@ -36,3 +36,10 @@ select * from AddressBook
 
 delete AddressBook
 where firstName='Basila' and lastname='Noushad'
+
+/*UC6 - Retrieving person contact base on City or State*/
+select * from AddressBook
+where City='Vizag'
+
+select * from AddressBook
+where State='Telangana'
