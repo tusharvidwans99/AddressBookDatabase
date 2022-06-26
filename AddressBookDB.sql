@@ -43,3 +43,12 @@ where City='Vizag'
 
 select * from AddressBook
 where State='Telangana'
+
+
+/*UC7 - Getting size of the AddressBook by city or state*/
+
+select City, count(City) from AddressBook
+Group BY City
+
+select State, count(State) from AddressBook
+Group by State
