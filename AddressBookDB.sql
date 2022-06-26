@@ -52,3 +52,8 @@ Group BY City
 
 select State, count(State) from AddressBook
 Group by State
+
+/*UC8 - Retrieving Person contact in alphabetical order by name for given city*/
+select * from AddressBook 
+where City='Vizag'
+order by firstName asc
