@@ -75,3 +75,8 @@ select * from AddressBook
 update addressBook
 set addressBookName='B' ,type='Friends'
 where firstName not in ('Madhukar','Sumit');
+
+
+--getting count by type
+select type, count(*) from AddressBook
+group BY type
