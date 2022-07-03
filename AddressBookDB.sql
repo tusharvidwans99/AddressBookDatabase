@@ -57,3 +57,21 @@ Group by State
 select * from AddressBook 
 where City='Vizag'
 order by firstName asc
+
+-- UC9 - identifying addressbook by name and it's type
+
+alter table AddressBook add addressName varchar(50), type varchar(50)
+
+alter table AddressBook drop column type  --to delete the coloumn
+
+exec sp_rename 'AddressBook.addressName', 'addressBookName', 'column'  --use to change the name of the column
+
+update AddressBook
+set addressBookName='A', type='Family'
+where firstName in ('Madhukar','Sumit');
+
+select * from AddressBook
+
+update addressBook
+set addressBookName='B' ,type='Friends'
+where firstName not in ('Madhukar','Sumit');
