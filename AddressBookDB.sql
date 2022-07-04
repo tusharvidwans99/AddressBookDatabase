@@ -171,3 +171,48 @@ join typeMapper t
 on t.contactid= a.contactid
 join TypesOfContacts tc
 on tc.typeid= t.typeid
+
+
+--UC13
+--Retrieving data using new table structure
+	--UC6
+	select firstname,lastname,city from AddressBook
+	where city='Vizag'
+
+	--UC7
+	select city,count(*)
+	from addressbook
+	where city='Vizag'
+	group by city
+
+	--UC8
+	select * from 
+	addressbook
+	where city='Vizag'
+	order by firstname,lastname
+
+	--UC10
+	select * from addressbook;
+
+	select typename,count(*) numberOfContactPersons from addressbook a
+	join typeMapper tm
+	on tm.contactid= a.contactid
+	join TypesOfContacts t
+	on t.typeid= tm.typeid
+	group by t.typename
+
+
+	alter table addressbook
+	drop column type
+
+	alter table addressBookMapper
+	add constraint foreignkey1 Foreign key(addressbookid) references addressbooknames(addressbookid)
+
+	alter table addressBookMapper
+	add constraint foreignkey2 Foreign key(contactid) references addressbook(contactid)
+
+	alter table typeMapper
+	add constraint foreignkey3 Foreign key(contactid) references addressbook(contactid)
+
+	alter table typeMapper
+	add constraint foreignkey5 foreign key(typeid) references typesofcontacts(typeid)
