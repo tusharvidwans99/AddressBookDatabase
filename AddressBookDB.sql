@@ -92,3 +92,82 @@ select type,count(*)
 from AddressBook
 group by type
 
+--UC12
+--Creating different entities in the table and doing normalization UC12
+--creating table typeofcontacts
+create table TypesOfContacts
+(
+typeid int primary key ,
+typename varchar(50) not null)
+
+--inserting data into type of contacts
+
+insert into TypesOfContacts 
+values (1,'Family'),(2,'Friends'),(3,'Business')
+
+select * from TypesOfContacts
+
+--altering address book to add contact id
+alter table AddressBook
+add contactid int primary key identity(1,1)
+
+select * from AddressBook
+
+--creating table address bok names which will contain the names of address book
+create table AddressBookNames
+(
+addressBookId int primary key identity(1,1),
+addressBookName varchar(50) not null
+)
+
+--inserting data into address book names
+insert into AddressBookNames
+values ('A'),('B'),('C')
+
+select * from AddressBookNames
+
+--creating table addressbookmapper which will contain contact id and address book names id
+create table addressBookMapper
+(
+contactid int not null,
+addressbookid int not null
+)
+
+--inserting data into address book mapper id
+insert into addressBookMapper
+values (1,1),(2,1),(3,2)
+
+select * from addressBookMapper
+--deleting redundant row from address book
+select * from AddressBook
+
+delete from AddressBook
+where firstName='Saran' and contactid=5
+
+select * from AddressBook
+
+select a.firstname,a.phoneNumber,a.city,a.state,a.eMail,b.addressbookname
+from AddressBook a
+join addressbookMapper d
+on a.contactid= d.contactId
+join AddressBookNames b
+on b.addressBookId= d.addressbookId
+
+--creating typemapper table to map types names to contacts
+create table typeMapper
+(
+contactid int not null,
+typeid int not null
+)
+
+--inserting data into typeMapper
+
+insert into typeMapper
+values (1,1),(2,2),(3,2),(2,3)
+
+select a.firstname,tc.typename
+from addressbook a
+join typeMapper t
+on t.contactid= a.contactid
+join TypesOfContacts tc
+on tc.typeid= t.typeid
