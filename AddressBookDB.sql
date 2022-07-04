@@ -77,6 +77,18 @@ set addressBookName='B' ,type='Friends'
 where firstName not in ('Madhukar','Sumit');
 
 
---getting count by type
+--UC10- getting count by type
 select type, count(*) from AddressBook
 group BY type
+
+--UC11 - adding same contact with different type in table UC11
+select * from AddressBook
+
+insert into AddressBook
+values ('Saran','Yellanki','Kurmannapalem','Vizag','Andhra Pradesh',530046,9618058892,'saran.yellanki12@gmail.com','B','Family')
+
+select * from addressBook;
+select type,count(*)
+from AddressBook
+group by type
+
